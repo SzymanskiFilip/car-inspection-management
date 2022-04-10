@@ -43,6 +43,9 @@ function LoginComponent(){
             from-sky-500
             to-sky-600
             text-white
+            transition-all
+            duration-75
+            hover:border-2
             ">
             LOGIN</button>
             
