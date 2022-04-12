@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import './index.css';
 import LoginPage from './Pages/LoginPage';
 import {Routes, Route} from 'react-router-dom';
 import {useState} from "react";
 import {AuthContext} from "./Context/AuthContext";
 import BlockAuth from './Utils/BlockAuth';
+import { AuthContextInterface } from './Interfaces/AuthContextInterface';
 
-function App() {
+function App(): JSX.Element {
 
-  const [authenticated, setAuthenticated] = useState(false);
-  const [role, setRole] = useState("");
+  const [authenticated, setAuthenticated] = useState<Boolean>(false);
+  const [role, setRole] = useState<string>("not-assigned");
+
+  const state = {
+    authenticated,
+    setAuthenticated,
+    role,
+    setRole
+  };
 
   return (
     <Routes>
-
       <Route path="/login" element={
-        <AuthContext.Provider value={{authenticated,setAuthenticated}}>
+        <AuthContext.Provider value = {state}>
           <BlockAuth>
             <LoginPage/>
           </BlockAuth>
