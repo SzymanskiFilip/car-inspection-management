@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function LoginComponent(){
+
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [rememberMe, setRememberMe] = useState<Boolean>(false);
+
+
     return(
         //TODO: Refactor code, wrap these classes in own css class
         <div className="flex flex-col bg-sky-400 w-80 h-96 max-w-xs max-h-96 rounded py-3 px-8">
@@ -8,16 +15,20 @@ function LoginComponent(){
 
             <input
             className="input"
-            type="text" placeholder="Username">
-            </input>
+            type="text" placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            />
 
             <input
             className="input"
-            type="password" placeholder="Password">
-            </input>
+            type="password" placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            />
 
             <div className="flex items-center justify-start text-xs text-stone-900">
-                <input type="checkbox" />
+                <input type="checkbox"
+                onChange={(e) => setRememberMe(e.target.checked)}
+                />
                 <p>Remember Me</p>
             </div>
 
