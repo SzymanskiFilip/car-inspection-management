@@ -6,6 +6,7 @@ import {useState} from "react";
 import {AuthContext} from "./Context/AuthContext";
 import BlockAuth from './Utils/BlockAuth';
 import { AuthContextInterface } from './Interfaces/AuthContextInterface';
+import HomePage from './Pages/HomePage';
 
 function App(): JSX.Element {
 
@@ -21,6 +22,12 @@ function App(): JSX.Element {
 
   return (
     <Routes>
+
+      <Route path="/" element={
+        <HomePage/>
+      }/>
+
+
       <Route path="/login" element={
         <AuthContext.Provider value = {state}>
           <BlockAuth>
