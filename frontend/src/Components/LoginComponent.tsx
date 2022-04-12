@@ -1,12 +1,23 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
 
 function LoginComponent(){
+
+    const context = useContext(AuthContext);
 
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [rememberMe, setRememberMe] = useState<Boolean>(false);
 
+    function login(){
+        console.log("username:" + username + " password:" + password + " remember-me:" + rememberMe);
+        if(username === "user" && password === "123"){
+            console.log("success!");
+            context?.setAuthenticated(true);
+            <Navigate to="/dashboard"/>
+        }
+    }
 
     return(
         //TODO: Refactor code, wrap these classes in own css class
@@ -33,7 +44,9 @@ function LoginComponent(){
             </div>
 
             <button className="rounded min-h-min h-10 max-h-18 my-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white
-            transition-all duration-75 hover:border-2">
+            transition-all duration-75 hover:border-2"
+            onClick={login}
+            >
             LOGIN</button>
             
 
