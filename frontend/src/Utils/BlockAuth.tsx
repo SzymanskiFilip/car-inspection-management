@@ -11,9 +11,9 @@ function BlockAuth({children} : {children : JSX.Element}) : JSX.Element{
     const context = useContext(AuthContext);
     console.log(context?.authenticated);
 
-    if(context?.authenticated === true){
+    if(context?.authenticated === true && context.role === "user"){
         return (
-            <Navigate to="/"/>
+            <Navigate to="/inspections"/>
         )
     } else {
         return (
