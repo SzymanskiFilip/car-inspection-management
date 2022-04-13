@@ -1,6 +1,16 @@
+import { AuthContext } from "../Context/AuthContext";
+import {useContext } from "react";
+
 function InspectionsPage(): JSX.Element {
+
+    const context = useContext(AuthContext);
+
     return(
-        <div>1</div>
+        <div>
+            <nav>
+                Hello, {context?.username}
+            </nav>
+        </div>
     )
 }
 

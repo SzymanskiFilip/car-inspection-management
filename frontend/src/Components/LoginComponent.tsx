@@ -16,6 +16,7 @@ function LoginComponent(){
             console.log("success!");
             context?.setAuthenticated(true);
             context?.setRole("user");
+            context?.setUsername(username);
             <Navigate to="/inspections"/>
         }
 

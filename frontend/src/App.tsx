@@ -13,12 +13,15 @@ function App(): JSX.Element {
 
   const [authenticated, setAuthenticated] = useState<Boolean>(false);
   const [role, setRole] = useState<string>("not-assigned");
+  const [username, setUsername] = useState<string>("not-assigned");
 
   const state = {
     authenticated,
     setAuthenticated,
     role,
-    setRole
+    setRole,
+    username,
+    setUsername
   };
 
   return (
@@ -38,7 +41,9 @@ function App(): JSX.Element {
       }/>
 
       <Route path="/inspections" element={
-        <InspectionsPage/>
+        <AuthContext.Provider value={state}>
+          <InspectionsPage/>
+        </AuthContext.Provider>
       }/>
 
     </Routes>
