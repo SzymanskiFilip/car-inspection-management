@@ -15,3 +15,7 @@
     @apply hover:outline;
     @apply transition duration-300;
 }
+
+.login-button{
+    @apply rounded min-h-min h-10 my-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white transition-all duration-75 hover:border-2
+}

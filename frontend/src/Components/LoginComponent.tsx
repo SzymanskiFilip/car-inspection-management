@@ -49,11 +49,9 @@ function LoginComponent(){
                 <p>Remember Me</p>
             </div>
 
-            <button className="rounded min-h-min h-10 max-h-18 my-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white
-            transition-all duration-75 hover:border-2"
-            onClick={login}
-            >
-            LOGIN</button>
+            <button className="login-button"onClick={login}>
+            LOGIN
+            </button>
             
 
             <Link to="/register" className=" text-xs self-center transition duration-150 hover:text-stone-800">
