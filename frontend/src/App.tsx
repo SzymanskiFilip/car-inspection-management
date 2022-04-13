@@ -7,6 +7,7 @@ import {AuthContext} from "./Context/AuthContext";
 import BlockAuth from './Utils/BlockAuth';
 import { AuthContextInterface } from './Interfaces/AuthContextInterface';
 import HomePage from './Pages/HomePage';
+import InspectionsPage from './Pages/InspectionsPage';
 
 function App(): JSX.Element {
 
@@ -34,6 +35,10 @@ function App(): JSX.Element {
             <LoginPage/>
           </BlockAuth>
         </AuthContext.Provider>
+      }/>
+
+      <Route path="/inspections" element={
+        <InspectionsPage/>
       }/>
 
     </Routes>
