@@ -15,12 +15,14 @@ function LoginComponent(){
         if(username === "user" && password === "123"){
             console.log("success!");
             context?.setAuthenticated(true);
+            context?.setRole("user");
             <Navigate to="/inspections"/>
         }
 
         if(username === "admin" && password === "123"){
             console.log("success!");
             context?.setAuthenticated(true);
+            context?.setRole("admin");
             <Navigate to="/dashboard"/>
         }
     }
