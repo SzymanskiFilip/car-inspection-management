@@ -19,3 +19,28 @@
 .login-button{
     @apply rounded min-h-min h-10 my-4 bg-gradient-to-r from-sky-500 to-sky-600 text-white transition-all duration-75 hover:border-2
 }
+
+.nav-button{
+    display: inline-block;
+    position: relative;
+    color: white;
+    @apply mx-2;
+}
+
+.nav-button:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-button:hover:after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
