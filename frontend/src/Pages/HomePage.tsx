@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 
 function HomePage():JSX.Element{
     return(
-        <div>
-            <h1>Welcome To The Car-Inspection Service!</h1>
-            <Link to="/login" className="bg-sky-400 rounded px-2 py-2">Login!</Link>
+        <div className="flex justify-center items-center h-screen w-screen bg-black">
+            <Link to="/login" className="hp-link">Login</Link>
+            <Link to="/" className="hp-link">Register</Link>
+            <Link to="/" className="hp-link">Pricing</Link>
+            <Link to="/" className="hp-link">Information</Link>
+            <Link to="/" className="hp-link">Contact</Link>
         </div>
     )
 }
