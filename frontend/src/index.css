@@ -46,7 +46,7 @@
 }
 
 .inspection{
-    @apply bg-gradient-to-r from-cyan-300 to-cyan-400 rounded my-5 w-2/5 h-64 min-w-fit drop-shadow-xl;
+    @apply bg-gradient-to-r from-cyan-300 to-cyan-400 rounded my-5 drop-shadow-xl mx-auto max-w-sm;
 }
 
 .hp-link{
