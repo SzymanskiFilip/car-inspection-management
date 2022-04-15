@@ -7,15 +7,9 @@ function InspectionCard(): JSX.Element {
             <div className="flex flex-row mx-2 my-2">
                 <div className="w-full">
                     <h1>List:</h1>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
-                    <InspectionListRow todo="CHANGE TIRES" status="DONE"/>
+                    <InspectionListRow todo="CHANGE TIRES" status={1}/>
+                    <InspectionListRow todo="CHANGE TIRES" status={2}/>
+                    <InspectionListRow todo="CHANGE TIRES" status={3}/>
 
 
                 </div>
