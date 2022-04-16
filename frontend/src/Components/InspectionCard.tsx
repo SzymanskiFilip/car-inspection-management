@@ -1,4 +1,5 @@
 import InspectionListRow from "./InspectionListRow";
+import InspectionStatusList from "./InspectionStatusList";
 
 
 function InspectionCard(): JSX.Element {
@@ -14,13 +15,7 @@ function InspectionCard(): JSX.Element {
 
                 </div>
             </div>
-
-            <div className="w-full flex flex-row justify-around my-5 text-stone-900">
-                <h1>Mercedes-Benz</h1>
-                <h1>C63 AMG</h1>
-                <h1>2014</h1>
-                <h1>TO BE PICKED UP</h1>
-            </div>
+            <InspectionStatusList make="BMW" model="M4" year={2014} status={3}/>
         </div>
     )
 }
