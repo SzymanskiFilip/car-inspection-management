@@ -1,7 +1,12 @@
-function AddInspectionWindow(): JSX.Element {
+interface props {
+    windowTrigger: Boolean;
+    setWindowTrigger: (setWindowTrigger: boolean) => void;
+}
+
+function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Element {
     return(
         <div className="inspection-window">
-            1
+            {/*dać guzik odlikania i na tlo odlkikanie*/}
         </div>
     )
 }

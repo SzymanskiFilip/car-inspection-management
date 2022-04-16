@@ -11,6 +11,7 @@ function InspectionsPage(): JSX.Element {
 
     return(
         <div>
+            
             <nav className="flex justify-between items-center h-10 bg-gradient-to-r from-indigo-500 to-indigo-700">
                 <h1 className="mx-2 text-white">Hello, {context?.username}!</h1>
                 <div className="flex justify-center items-center justify-self-end">
@@ -21,15 +22,11 @@ function InspectionsPage(): JSX.Element {
 
                 </div>
             </nav>
-
-            <AddInspectionWindow />
-
-            
             <div className="w-screen flex flex-col justify-center items-center">
-
-            <InspectionCard />  
-
+                <InspectionCard />  
             </div>
+
+            <AddInspectionWindow windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger} />
         </div>
     )
 }
