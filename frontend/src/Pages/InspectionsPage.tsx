@@ -3,6 +3,7 @@ import {useContext, useState } from "react";
 import {Link} from "react-router-dom"
 import InspectionCard from "../Components/InspectionCard";
 import AddInspectionWindow from "../Components/AddInspectionWindow";
+import BlackBackground from "../Components/BlackBackground";
 
 function InspectionsPage(): JSX.Element {
 
@@ -26,6 +27,8 @@ function InspectionsPage(): JSX.Element {
                 <InspectionCard />  
             </div>
 
+
+            <BlackBackground />
             <AddInspectionWindow windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger} />
         </div>
     )

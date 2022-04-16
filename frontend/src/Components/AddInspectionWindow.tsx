@@ -6,7 +6,7 @@ interface props {
 function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Element {
     return(
         <div className="inspection-window">
-            {/*dać guzik odlikania i na tlo odlkikanie*/}
+            <h1>Request new Inspection123</h1>
         </div>
     )
 }

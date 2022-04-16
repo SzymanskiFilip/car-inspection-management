@@ -76,7 +76,12 @@
     transform-origin: bottom left;
 }
 
+.inspection-background{
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    @apply w-full h-full bg-black opacity-60 flex flex-col;
+}
+
 .inspection-window{
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
-    @apply w-full h-full bg-black opacity-50;
 }
+
