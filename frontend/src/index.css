@@ -86,3 +86,6 @@
     @apply bg-white rounded;
 }
 
+.request-field{
+    @apply mx-2 my-2 px-1 py-1 outline-0 shadow-inner bg-gray-100;
+}
