@@ -89,3 +89,15 @@
 .request-field{
     @apply mx-2 my-2 px-1 py-1 outline-0 shadow-inner bg-gray-100;
 }
+
+.table-style{
+    @apply table-auto border-collapse  border border-slate-400 rounded md:border-collapse;
+}
+
+.table-head-cell{
+    @apply px-2 border border-slate-300 bg-slate-100;
+}
+
+.table-cell{
+    @apply px-2 border border-slate-300;
+}

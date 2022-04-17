@@ -23,6 +23,7 @@ function LoginComponent(){
             console.log("success!");
             context?.setAuthenticated(true);
             context?.setRole("admin");
+            context?.setUsername(username);
             <Navigate to="/dashboard" />
         }
     }
