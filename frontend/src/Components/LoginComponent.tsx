@@ -11,7 +11,6 @@ function LoginComponent(){
     const [rememberMe, setRememberMe] = useState<Boolean>(false);
 
     function login(){
-        console.log("username:" + username + " password:" + password + " remember-me:" + rememberMe);
         if(username === "user" && password === "123"){
             console.log("success!");
             context?.setAuthenticated(true);
@@ -24,7 +23,7 @@ function LoginComponent(){
             console.log("success!");
             context?.setAuthenticated(true);
             context?.setRole("admin");
-            <Navigate to="/dashboard"/>
+            <Navigate to="/dashboard" />
         }
     }
 

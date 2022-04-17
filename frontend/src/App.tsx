@@ -9,6 +9,7 @@ import { AuthContextInterface } from './Interfaces/AuthContextInterface';
 import HomePage from './Pages/HomePage';
 import InspectionsPage from './Pages/InspectionsPage';
 import RequireAuth from './Utils/RequireAuth';
+import DashboardPage from './Pages/DashboardPage';
 
 function App(): JSX.Element {
 
@@ -45,6 +46,14 @@ function App(): JSX.Element {
         <AuthContext.Provider value={state}>
           <RequireAuth roleToPermit="user">
             <InspectionsPage/>
+          </RequireAuth>
+        </AuthContext.Provider>
+      }/>
+
+      <Route path="/dashboard" element={
+        <AuthContext.Provider value={state}>
+          <RequireAuth roleToPermit="admin">
+            <DashboardPage />
           </RequireAuth>
         </AuthContext.Provider>
       }/>

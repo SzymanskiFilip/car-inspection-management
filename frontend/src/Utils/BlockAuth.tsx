@@ -15,6 +15,10 @@ function BlockAuth({children} : {children : JSX.Element}) : JSX.Element{
         return (
             <Navigate to="/inspections"/>
         )
+    } else if (context?.authenticated === true && context.role === "admin"){
+        return(
+            <Navigate to="/dashboard"/>
+        )
     } else {
         return (
             children
