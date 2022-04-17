@@ -1,6 +1,6 @@
 import { AuthContext } from "../Context/AuthContext";
 import {useContext, useState } from "react";
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 import InspectionCard from "../Components/InspectionCard";
 import AddInspectionWindow from "../Components/AddInspectionWindow";
 import BlackBackground from "../Components/BlackBackground";
@@ -14,6 +14,11 @@ function InspectionsPage(): JSX.Element {
         setWindowTrigger(true);
     }
 
+    function logout(){
+        {/* DELETE COOKIES */}
+        context?.setAuthenticated(false);
+    }
+
     return(
         <div>
             
@@ -23,11 +28,11 @@ function InspectionsPage(): JSX.Element {
 
                     <button className="nav-button" onClick={handleAddInspectionClick}>Add Inspection</button>
                     <Link to="/account" className="nav-button">Account</Link>
-                    <button className="nav-button">Logout</button>
+                    <button className="nav-button" onClick={logout}>Logout</button>
 
                 </div>
             </nav>
-            
+
             <div className="w-screen flex flex-col justify-center items-center">
                 <InspectionCard />  
             </div>

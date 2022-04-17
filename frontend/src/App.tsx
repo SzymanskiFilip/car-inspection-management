@@ -8,6 +8,7 @@ import BlockAuth from './Utils/BlockAuth';
 import { AuthContextInterface } from './Interfaces/AuthContextInterface';
 import HomePage from './Pages/HomePage';
 import InspectionsPage from './Pages/InspectionsPage';
+import RequireAuth from './Utils/RequireAuth';
 
 function App(): JSX.Element {
 
@@ -42,7 +43,9 @@ function App(): JSX.Element {
 
       <Route path="/inspections" element={
         <AuthContext.Provider value={state}>
-          <InspectionsPage/>
+          <RequireAuth roleToPermit="user">
+            <InspectionsPage/>
+          </RequireAuth>
         </AuthContext.Provider>
       }/>
 
