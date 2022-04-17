@@ -10,6 +10,10 @@ function InspectionsPage(): JSX.Element {
     const context = useContext(AuthContext);
     const [windowTrigger, setWindowTrigger] = useState<Boolean>(false);
 
+    function handleAddInspectionClick(){
+        setWindowTrigger(true);
+    }
+
     return(
         <div>
             
@@ -17,19 +21,26 @@ function InspectionsPage(): JSX.Element {
                 <h1 className="mx-2 text-white">Hello, {context?.username}!</h1>
                 <div className="flex justify-center items-center justify-self-end">
 
-                    <button className="nav-button">Add Inspection</button>
+                    <button className="nav-button" onClick={handleAddInspectionClick}>Add Inspection</button>
                     <Link to="/account" className="nav-button">Account</Link>
                     <button className="nav-button">Logout</button>
 
                 </div>
             </nav>
+            
             <div className="w-screen flex flex-col justify-center items-center">
                 <InspectionCard />  
             </div>
 
+            {
+                windowTrigger ? <BlackBackground windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger}/> : null
+            }
 
-            <BlackBackground />
-            <AddInspectionWindow windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger} />
+            {
+                windowTrigger ? <AddInspectionWindow windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger}/> : null
+            }
+
+           
         </div>
     )
 }

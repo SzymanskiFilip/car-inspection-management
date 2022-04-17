@@ -11,14 +11,18 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
 
     function handleChoice(event: any){
         console.log(event.target.value);
-        setWindowTrigger(event.target.value);
+    }
+
+    function handleWindowRender(){
+        console.log('1')
+        setWindowTrigger(false);
     }
 
     return(
         <div className="inspection-window h-80 flex flex-col px-6 py-6">
             
             <div className="absolute top-0 right-0">
-                <img src={svg} alt="" />
+                <img src={svg} alt="" className="w-8 hover:cursor-pointer" onClick={handleWindowRender}/>
             </div>
             <h1 className="text-center">Request new Inspection</h1>
             <input type="text" placeholder="Make" className="request-field"/>
@@ -36,9 +40,7 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
                 }
             </select>
 
-            <button className="bg-sky-500 rounded text-white py-1 my-5 hover:shadow-2xl hover:bg-sky-400
-                transition duration-150
-            ">Request</button>
+            <button className="bg-sky-500 rounded text-white py-1 my-5 hover:shadow-2xl hover:bg-sky-400 transition duration-150">Request</button>
         </div>
     )
 }
