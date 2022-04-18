@@ -21,14 +21,21 @@ const row2: dashboardData = {
     dueDate: "18.04.2022",
     year: 2014,
 }
+const row3: dashboardData = {
+    id: 2,
+    brand: "AUDI",
+    model: "R8",
+    dueDate: "18.04.2022",
+    year: 2014,
+}
 
-let mockRows: dashboardData[] = [row1, row2];
+let mockRows: dashboardData[] = [row1, row2, row3, row1, row2];
 
 
 function DashboardTable(): JSX.Element{
 
-    {/* TOGGLES AND CHANGES ROW COLOR */}
     let darkRow: Boolean = false;
+    let darkRowClass: string = "bg-purple-100";
 
     return(
         <table className="table-style">
@@ -47,14 +54,22 @@ function DashboardTable(): JSX.Element{
                     {
                     mockRows.map((row) => {
 
+                        if(darkRow === false){
+                            darkRow = true;
+                            darkRowClass = "bg-purple-100";
+                        } else if(darkRow === true){
+                            darkRow = false;
+                            darkRowClass = "";
+                        }
+
                         return(
                             <tr>
-                                <td className="table-cell">{row.brand}</td>
-                                <td className="table-cell">{row.model}</td>
-                                <td className="table-cell">{row.dueDate}</td>
-                                <td className="table-cell">{row.year}</td>
-                                <td className="table-cell">OPEN</td>
-                                <td className="table-cell">FINISH</td>
+                                <td className={"table-cell " + darkRowClass}>{row.brand}</td>
+                                <td className={"table-cell " + darkRowClass}>{row.model}</td>
+                                <td className={"table-cell " + darkRowClass}>{row.dueDate}</td>
+                                <td className={"table-cell " + darkRowClass}>{row.year}</td>
+                                <td className={"table-cell " + darkRowClass}>OPEN</td>
+                                <td className={"table-cell " + darkRowClass}>FINISH</td>
                             </tr>
                         )
                     })
