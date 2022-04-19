@@ -101,3 +101,8 @@
 .table-cell{
     @apply px-2 border border-slate-300 text-center;
 }
+
+.table-button{
+    @apply bg-gradient-to-r from-indigo-400 to-indigo-500 rounded px-1 py-1 mx-1 my-1 text-white;
+    @apply hover:cursor-pointer hover:bg-gradient-to-r hover:from-indigo-500 hover:to-indigo-600;
+}
