@@ -1,5 +1,6 @@
 import BlackBackground from "./BlackBackground";
 import {useState} from "react";
+import DashboardDetailsCard from "./DashboardDetailsCard";
 
 interface dashboardData {
     id: number;
@@ -43,6 +44,10 @@ function DashboardTable(): JSX.Element{
             {
                 windowTrigger ? <BlackBackground windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger}/> : null
             }
+            {
+                windowTrigger ? <DashboardDetailsCard windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger}/> : null
+            }
+            
             <table className="table-style">
                  <thead>
                     <tr>
