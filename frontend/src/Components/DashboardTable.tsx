@@ -55,7 +55,7 @@ function DashboardTable(): JSX.Element{
                         <th className="table-head-cell">Model</th>
                         <th className="table-head-cell">Due Date</th>
                         <th className="table-head-cell">Year</th>
-                        <th className="table-head-cell">Details</th>
+                        <th className="table-head-cell">User Details</th>
                         <th className="table-head-cell">Finish</th>
                     </tr>
                 </thead>
