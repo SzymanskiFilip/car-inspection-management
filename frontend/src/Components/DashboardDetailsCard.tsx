@@ -12,45 +12,15 @@ function DashboardDetailsCard({windowTrigger, setWindowTrigger}: props): JSX.Ele
     }
 
     return(
-        <div className="inspection-window flex flex-col px-4 py-4">
+        <div className="inspection-window px-2 py-2">
             <div className="absolute top-0 right-0">
-                <img src={svg} alt="" className="w-6 hover:cursor-pointer" onClick={handleXClick}/>
+                <img src={svg} alt="" className="w-8 hover:cursor-pointer" onClick={handleXClick}/>
             </div>
-            <div className="flex flex-row">
-                <div className="bg-stone-100 mx-2 my-2 px-1 py-1 rounded flex flex-col">
-
-                    <div className="flex flex-row items-center justify-items-start">
-                        <h1>Name:</h1>
-                        <h1>Filip</h1>
-                    </div>
-
-                    <div className="flex flex-row items-center justify-around">
-                        <h1>Last Name:</h1>
-                        <h1>Szymanski</h1>
-                    </div>
-
-                    <div className="flex flex-row items-center justify-around">
-                        <h1>Email:</h1>
-                        <h1>Filip@gmail.com</h1>
-                    </div>
-                </div>
-
-                <div className="bg-stone-100 mx-2 my-2 px-1 py-1 rounded">
-                    <h1>User since: 19.02.2022</h1>
-                    <h1>User Code: XGLS-123-fdafadxS</h1>
-                </div>
-            </div>
-
-            <div className="">
-                <h1>Make: BMW</h1>
-                <h1>Model: M4</h1>
-                <h1>Year of Production: 2004</h1>
-                <h1>Due Date: 12.21.2002</h1>
-            </div>
-
-            <div className="flex flex-row">
+            <div className="px-4 py-4 flex flex-col items-center">
+                <h1 className="tracking-wide text-2xl">Filip Szymanski</h1>
+                <h1>E-Mail: filip@gmail.com</h1>
+                <h1>Code: 1234-abcd-5678-efgh</h1>
                 <h1>REMOVE</h1>
-                <h1>FINISH</h1>
             </div>
         </div>
     )
