@@ -1,6 +1,7 @@
 import BlackBackground from "./BlackBackground";
 import {useState} from "react";
 import DashboardDetailsCard from "./DashboardDetailsCard";
+import AreYouSure from "./AreYouSure";
 
 interface dashboardData {
     id: number;
@@ -28,16 +29,19 @@ function DashboardTable(): JSX.Element{
     let darkRowClass: string = "bg-purple-100";
 
     const [windowTrigger, setWindowTrigger] = useState<Boolean>(false);
+    const [surePopUp, setSurePopUp] = useState<Boolean>(false);
 
     function handleDetailsClick(id: number){
         setWindowTrigger(true);
     }
 
     function handleFinishClick(){
-        //opens pop up to ask if sure if finished
+        setSurePopUp(true);
     }
 
-    
+    function handleFinish(){
+        console.log("confirmed finsihing")
+    }
 
     return(
         <div>
@@ -46,6 +50,13 @@ function DashboardTable(): JSX.Element{
             }
             {
                 windowTrigger ? <DashboardDetailsCard windowTrigger={windowTrigger} setWindowTrigger={setWindowTrigger}/> : null
+            }
+
+            {
+                surePopUp ? <BlackBackground windowTrigger={windowTrigger} setWindowTrigger={setSurePopUp}/> : null
+            }
+            {
+                surePopUp ? <AreYouSure firePassedFunction={handleFinish} setWindowTrigger={setSurePopUp}/> : null
             }
             
             <table className="table-style">
@@ -80,7 +91,7 @@ function DashboardTable(): JSX.Element{
                                 <h1 className="table-button" onClick={() => handleDetailsClick(row.id)}>Details</h1>
                             </td>
                             <td className={"table-cell " + darkRowClass}>
-                                <h1 className="table-button">Finish</h1>
+                                <h1 className="table-button" onClick={handleFinishClick}>Finish</h1>
                             </td>
                         </tr>
                     )
