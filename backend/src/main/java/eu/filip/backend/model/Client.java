@@ -3,12 +3,11 @@ package eu.filip.backend.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "workshops")
+@Table(name = "clients")
 @Data
-public class Workshop {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,9 +16,7 @@ public class Workshop {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user_id;
 
-    @Column(name = "name")
-    private String name;
-
-    @OneToMany
-    private List<Client> clients;
+    @ManyToOne
+    @JoinColumn(name = "workshop_id", nullable = false)
+    private Workshop workshop_id;
 }
