@@ -1,8 +1,10 @@
-package eu.filip.backend.model;
+package eu.filip.backend.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -16,9 +18,13 @@ public class TodoPoint {
     @JoinColumn(name = "inspection_id", referencedColumnName = "id")
     private Inspection inspection_id;
 
+    @NotNull
+    @NotBlank
     @Column(name = "body")
     private String body;
 
+    @NotNull
+    @NotBlank
     @Column(name = "status")
-    private boolean status;
+    private int status;
 }

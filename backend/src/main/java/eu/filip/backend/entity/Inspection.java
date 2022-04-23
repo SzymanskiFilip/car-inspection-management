@@ -1,4 +1,4 @@
-package eu.filip.backend.model;
+package eu.filip.backend.entity;
 
 import lombok.Data;
 

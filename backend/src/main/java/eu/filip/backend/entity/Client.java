@@ -1,8 +1,10 @@
-package eu.filip.backend.model;
+package eu.filip.backend.entity;
 
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Table(name = "clients")
@@ -12,7 +14,12 @@ public class Client{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @NotBlank
     private String first_name;
+
+    @NotNull
+    @NotBlank
     private String last_name;
 
     @OneToOne
