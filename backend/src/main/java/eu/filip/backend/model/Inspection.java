@@ -5,21 +5,18 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Table(name = "clients")
+@Table(name = "inspections")
 @Entity
-public class Client{
+public class Inspection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String first_name;
-    private String last_name;
+    @OneToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client_id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user_id;
-
-    @ManyToOne
     @JoinColumn(name = "workshop_id", referencedColumnName = "id")
     private Workshop workshop_id;
 }
