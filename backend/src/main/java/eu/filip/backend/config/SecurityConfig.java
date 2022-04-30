@@ -2,6 +2,7 @@ package eu.filip.backend.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Authenticator;
+import eu.filip.backend.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -23,19 +24,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final ObjectMapper objectMapper;
     private final SuccessHandler successHandler;
     private final FailureHandler failureHandler;
+    private final UserDetailsServiceImpl userDetailsService;
 
-    public SecurityConfig(ObjectMapper objectMapper, SuccessHandler successHandler, FailureHandler failureHandler) {
+    public SecurityConfig(ObjectMapper objectMapper, SuccessHandler successHandler, FailureHandler failureHandler, UserDetailsServiceImpl userDetailsService) {
         this.objectMapper = objectMapper;
         this.successHandler = successHandler;
         this.failureHandler = failureHandler;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("123")
-                .roles("USER");
+        auth.userDetailsService(userDetailsService);
     }
 
     @Override
