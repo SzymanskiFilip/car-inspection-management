@@ -43,6 +43,9 @@ public class JsonAuthFilter extends UsernamePasswordAuthenticationFilter {
             Cookie roleCookie = new Cookie("ROLE", user.getRole());
             response.addCookie(roleCookie);
 
+            Cookie usernameCookie = new Cookie("USERNAME", user.getUsername());
+            response.addCookie(usernameCookie);
+
             return this.getAuthenticationManager().authenticate(token);
         } catch (IOException e) {
             throw new IllegalArgumentException(e.getMessage());
