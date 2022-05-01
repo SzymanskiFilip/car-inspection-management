@@ -3,6 +3,7 @@ package eu.filip.backend.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Authenticator;
 import eu.filip.backend.service.UserDetailsServiceImpl;
+import eu.filip.backend.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -25,12 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SuccessHandler successHandler;
     private final FailureHandler failureHandler;
     private final UserDetailsServiceImpl userDetailsService;
+    private final UserService userService;
 
-    public SecurityConfig(ObjectMapper objectMapper, SuccessHandler successHandler, FailureHandler failureHandler, UserDetailsServiceImpl userDetailsService) {
+    public SecurityConfig(ObjectMapper objectMapper, SuccessHandler successHandler, FailureHandler failureHandler, UserDetailsServiceImpl userDetailsService, UserService userService) {
         this.objectMapper = objectMapper;
         this.successHandler = successHandler;
         this.failureHandler = failureHandler;
         this.userDetailsService = userDetailsService;
+        this.userService = userService;
     }
 
     @Override
@@ -41,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        http.cors();
         http
                 .authorizeRequests()
                 .anyRequest()
@@ -64,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public JsonAuthFilter authFilter() throws Exception{
-        JsonAuthFilter authFilter = new JsonAuthFilter(objectMapper);
+        JsonAuthFilter authFilter = new JsonAuthFilter(objectMapper, userService);
         authFilter.setAuthenticationSuccessHandler(successHandler);
         authFilter.setAuthenticationFailureHandler(failureHandler);
         authFilter.setAuthenticationManager(super.authenticationManager());
