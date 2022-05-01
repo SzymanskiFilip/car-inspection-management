@@ -49,21 +49,13 @@ function LoginComponent(){
                     }
 
                     if(role === "workshop"){
-
+                        context?.setAuthenticated(true);
+                        context?.setRole("workshop");
+                        context?.setUsername(username);
+                        navigate("/dashboard");
                     }
                 }
             })
-
-    
-        /*
-        if(username === "admin" && password === "123"){
-            console.log("success!");
-            context?.setAuthenticated(true);
-            context?.setRole("admin");
-            context?.setUsername(username);
-            <Navigate to="/dashboard" />
-        }
-        */
     }
 
     return(
