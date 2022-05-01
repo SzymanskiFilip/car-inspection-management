@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, NavigateFunction, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
+import Cookie from "js-cookie";
 
 function LoginComponent(){
 
@@ -9,6 +10,7 @@ function LoginComponent(){
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [rememberMe, setRememberMe] = useState<Boolean>(false);
+    const navigate: NavigateFunction = useNavigate();
 
     async function login(){
         
@@ -29,19 +31,31 @@ function LoginComponent(){
 
         await fetch("http://localhost:8080/login", config)
             .then((res) => {
+            
                 console.log(res)
+                let role: string;
+                let username: string;
+
+                if(res.status === 200){
+                    console.log("LOGGED IN!")
+                    role = Cookie.get("ROLE")!;
+                    username = Cookie.get("USERNAME")!;
+
+                    if(role === "client"){
+                        context?.setAuthenticated(true);
+                        context?.setRole("client");
+                        context?.setUsername(username);
+                        navigate("/inspections");
+                    }
+
+                    if(role === "workshop"){
+
+                    }
+                }
             })
 
     
         /*
-        if(username === "user" && password === "123"){
-            console.log("success!");
-            context?.setAuthenticated(true);
-            context?.setRole("user");
-            context?.setUsername(username);
-            <Navigate to="/inspections"/>
-        }
-
         if(username === "admin" && password === "123"){
             console.log("success!");
             context?.setAuthenticated(true);

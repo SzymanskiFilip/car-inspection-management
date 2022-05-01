@@ -44,7 +44,7 @@ function App(): JSX.Element {
 
       <Route path="/inspections" element={
         <AuthContext.Provider value={state}>
-          <RequireAuth roleToPermit="user">
+          <RequireAuth roleToPermit="client">
             <InspectionsPage/>
           </RequireAuth>
         </AuthContext.Provider>
@@ -52,7 +52,7 @@ function App(): JSX.Element {
 
       <Route path="/dashboard" element={
         <AuthContext.Provider value={state}>
-          <RequireAuth roleToPermit="admin">
+          <RequireAuth roleToPermit="workshop">
             <DashboardPage />
           </RequireAuth>
         </AuthContext.Provider>
