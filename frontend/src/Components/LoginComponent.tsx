@@ -10,7 +10,30 @@ function LoginComponent(){
     const [password, setPassword] = useState<string>("");
     const [rememberMe, setRememberMe] = useState<Boolean>(false);
 
-    function login(){
+    async function login(){
+        
+        let payload = {
+            "username": username,
+            "password": password
+        };
+
+        let config: RequestInit = {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        }
+
+        await fetch("http://localhost:8080/login", config)
+            .then((res) => {
+                console.log(res)
+            })
+
+    
+        /*
         if(username === "user" && password === "123"){
             console.log("success!");
             context?.setAuthenticated(true);
@@ -26,6 +49,7 @@ function LoginComponent(){
             context?.setUsername(username);
             <Navigate to="/dashboard" />
         }
+        */
     }
 
     return(
