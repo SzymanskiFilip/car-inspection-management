@@ -2,7 +2,7 @@ import React, { createContext, useContext } from 'react';
 import './index.css';
 import LoginPage from './Pages/LoginPage';
 import {Routes, Route} from 'react-router-dom';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {AuthContext} from "./Context/AuthContext";
 import BlockAuth from './Utils/BlockAuth';
 import { AuthContextInterface } from './Interfaces/AuthContextInterface';
@@ -10,6 +10,8 @@ import HomePage from './Pages/HomePage';
 import InspectionsPage from './Pages/InspectionsPage';
 import RequireAuth from './Utils/RequireAuth';
 import DashboardPage from './Pages/DashboardPage';
+import checkAuthentication from './Utils/checkAuthentication';
+import Cookie from 'js-cookie';
 
 function App(): JSX.Element {
 
@@ -26,7 +28,27 @@ function App(): JSX.Element {
     setUsername
   };
 
+  useEffect(() => {
+    const status = async () => {
+      let reply = await checkAuthentication();
+      if(reply.valueOf() === true){
+        setAuthenticated(true);
+      }
+    }
+
+    status();
+    let role: any = Cookie.get("ROLE");
+    let username: any = Cookie.get("USERNAME");
+
+    setRole(role);
+    setUsername(username);
+
+  }, []);
+
+
+
   return (
+
     <Routes>
 
       <Route path="/" element={

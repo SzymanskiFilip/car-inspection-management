@@ -1,5 +1,5 @@
 import { AuthContext } from "../Context/AuthContext";
-import {useContext, useState } from "react";
+import {useContext, useState} from "react";
 import {Link, Navigate, useNavigate, NavigateFunction} from "react-router-dom"
 import InspectionCard from "../Components/InspectionCard";
 import AddInspectionWindow from "../Components/AddInspectionWindow";

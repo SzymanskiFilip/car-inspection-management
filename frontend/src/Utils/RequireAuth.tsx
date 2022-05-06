@@ -1,6 +1,7 @@
 import { AuthContext } from "../Context/AuthContext";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import { Navigate } from "react-router-dom";
+import checkAuthentication from "./checkAuthentication";
 
 function RequireAuth({children, roleToPermit} : {children : JSX.Element, roleToPermit: string}): JSX.Element {
 
