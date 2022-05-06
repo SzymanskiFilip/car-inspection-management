@@ -2,10 +2,19 @@ import {Link} from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
 import {useContext} from "react";
 import DashboardTable from "../Components/DashboardTable";
+import { logoutFunction } from "../Utils/LogoutFuntcion";
+import {useNavigate} from "react-router-dom";
 
 function DashboardPage(): JSX.Element {
 
     const context = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    function logout(){
+        navigate("/");
+        logoutFunction();
+        context?.setAuthenticated(false);
+    }
 
     return(
         <div>
@@ -16,7 +25,7 @@ function DashboardPage(): JSX.Element {
                     {/* na maila wysyła klientowi zaproszenie link */}
                     <button className="nav-button">Generate Key</button>
                     <Link to="/account" className="nav-button">Account</Link>
-                    <button className="nav-button">Logout</button>
+                    <button className="nav-button" onClick={logout}>Logout</button>
 
                 </div>
             </nav>
