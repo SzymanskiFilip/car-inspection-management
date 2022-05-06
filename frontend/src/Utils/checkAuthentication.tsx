@@ -1,7 +1,4 @@
-async function checkAuthentication(){
-
-    let status: Boolean = false;
-    
+async function checkAuthentication(setAuthenticated: any, setRole: any, setUsername: any){
     let config: RequestInit = {
         method: "POST",
         mode: "cors",
@@ -12,13 +9,12 @@ async function checkAuthentication(){
     }
 
     await fetch("http://localhost:8080/check", config)
-            .then((res) => {
-            if(res.status === 200){
-                status = true;
-            } 
-    })
-    
-    return status;
+        .then((response) => response.json())
+        .then((res) => {
+            setAuthenticated(true);
+            setRole(res.role);
+            setUsername(res.username);
+        })
     
 }
 

@@ -30,18 +30,9 @@ function App(): JSX.Element {
 
   useEffect(() => {
     const status = async () => {
-      let reply = await checkAuthentication();
-      if(reply.valueOf() === true){
-        setAuthenticated(true);
-      }
+      await checkAuthentication(setAuthenticated, setRole, setUsername);
     }
-
     status();
-    let role: any = Cookie.get("ROLE");
-    let username: any = Cookie.get("USERNAME");
-
-    setRole(role);
-    setUsername(username);
 
   }, []);
 
