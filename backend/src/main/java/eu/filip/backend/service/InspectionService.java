@@ -8,8 +8,12 @@ import eu.filip.backend.repository.ClientRepository;
 import eu.filip.backend.repository.InspectionRepository;
 import eu.filip.backend.repository.UserRepository;
 import eu.filip.backend.repository.WorkshopRepository;
+import eu.filip.backend.util.InspectionDto;
 import eu.filip.backend.util.InspectionRequestDto;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class InspectionService {
@@ -41,5 +45,27 @@ public class InspectionService {
 
         inspectionRepository.save(newInspection);
         return newInspection;
+    }
+
+    public List<InspectionDto> findInspectionsByWorkshopId(String username){
+        User user = userRepository.findUserByUsername(username).get();
+        Workshop workshop = workshopRepository.findWorkshopByUser_id(user.getId());
+        List<Inspection> inspections = inspectionRepository.findAllByWorkshop_id(workshop.getId());
+
+        List<InspectionDto> inspectionDtos = new ArrayList<>();
+
+        inspections.forEach(inspection -> {
+            inspectionDtos.add(new InspectionDto(
+                    inspection.getId(),
+                    inspection.getInspectionType(),
+                    inspection.getMake(),
+                    inspection.getModel(),
+                    inspection.getYearOfProduction(),
+                    inspection.getClient_id().getId(),
+                    inspection.getWorkshop_id().getId()
+            ));
+        });
+
+        return inspectionDtos;
     }
 }

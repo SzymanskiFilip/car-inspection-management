@@ -38,7 +38,7 @@ public class User implements UserDetails {
         return Arrays.asList(new GrantedAuthority() {
             @Override
             public String getAuthority() {
-                return "client";
+                return role;
             }
         });
     }
