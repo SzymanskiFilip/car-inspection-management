@@ -23,7 +23,7 @@ public class InspectionController {
     @PostMapping("/request-inspection")
     public ResponseEntity<Inspection> requestInspection(@RequestBody InspectionRequestDto inspection, Principal principal){
 
-        Inspection inspection1 = inspectionService.createInspection(inspection, principal.getName());
+        inspectionService.createInspection(inspection, principal.getName());
 
         return ResponseEntity.ok().build();
     }

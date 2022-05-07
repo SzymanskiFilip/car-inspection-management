@@ -1,4 +1,5 @@
 import svg from "../images/cross.svg";
+import {useState} from "react";
 
 interface props {
     windowTrigger: Boolean;
@@ -9,8 +10,13 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
 
     const options: string[] = ["Standard", "Premium", "Sport"];
 
+    const [make, setMake] = useState<string>("");
+    const [model, setModel] = useState<string>("");
+    const [year, setYear] = useState<number>(0);
+    const [option, setOption] = useState<string>("");
+
     function handleChoice(event: any){
-        console.log(event.target.value);
+        setOption(event.target.value);
     }
 
     function handleWindowRender(){
@@ -25,9 +31,9 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
                 <img src={svg} alt="" className="w-8 hover:cursor-pointer" onClick={handleWindowRender}/>
             </div>
             <h1 className="text-center">Request new Inspection</h1>
-            <input type="text" placeholder="Make" className="request-field"/>
-            <input type="text" placeholder="Model" className="request-field"/>
-            <input type="text" placeholder="Year" className="request-field"/>
+            <input type="text" placeholder="Make" className="request-field" onChange={(e) => setMake(e.target.value)}/>
+            <input type="text" placeholder="Model" className="request-field" onChange={(e) => setModel(e.target.value)}/>
+            <input type="number" placeholder="Year" className="request-field" onChange={(e) => setYear(parseInt(e.target.value))}/>
             <br/>
 
             <select className="px-1 py-1 outline-0" onChange={handleChoice}>
