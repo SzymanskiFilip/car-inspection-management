@@ -1,26 +1,18 @@
 import BlackBackground from "./BlackBackground";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import DashboardDetailsCard from "./DashboardDetailsCard";
 import AreYouSure from "./AreYouSure";
 
 interface dashboardData {
+    client_id: number;
     id: number;
-    brand: string;
+    inspectionType: string;
+    make: string;
     model: string;
-    dueDate: string;
-    year: number;
+    workshop_id: number;
+    year_of_production: number;
 }
 
-const row1: dashboardData = {
-    id: 1,
-    brand: "BMW",
-    model: "M4",
-    dueDate: "18.04.2022",
-    year: 2014,
-}
-
-
-let mockRows: dashboardData[] = [row1];
 
 
 function DashboardTable(): JSX.Element{
@@ -30,6 +22,8 @@ function DashboardTable(): JSX.Element{
 
     const [windowTrigger, setWindowTrigger] = useState<Boolean>(false);
     const [surePopUp, setSurePopUp] = useState<Boolean>(false);
+    const [rows, setRows] = useState<dashboardData[]>([]);
+    //const rows: dashboardData[] = [];
 
     function handleDetailsClick(id: number){
         setWindowTrigger(true);
@@ -42,6 +36,28 @@ function DashboardTable(): JSX.Element{
     function handleFinish(){
         console.log("confirmed finsihing")
     }
+
+    async function fetchInspections(){
+        let config : RequestInit = {
+            method: "GET",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+
+        await fetch("http://localhost:8080/inspections", config)
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res)
+            setRows(res)
+        })
+    }
+
+    useEffect(() => {
+        fetchInspections();
+    }, []);
 
     return(
         <div>
@@ -64,7 +80,6 @@ function DashboardTable(): JSX.Element{
                     <tr>
                         <th className="table-head-cell">Brand</th>
                         <th className="table-head-cell">Model</th>
-                        <th className="table-head-cell">Due Date</th>
                         <th className="table-head-cell">Year</th>
                         <th className="table-head-cell">User Details</th>
                         <th className="table-head-cell">Finish</th>
@@ -73,7 +88,7 @@ function DashboardTable(): JSX.Element{
 
                 <tbody>
                 {
-                mockRows.map((row) => {
+                rows.map((row) => {
                     if(darkRow === false){
                         darkRow = true;
                         darkRowClass = "bg-purple-100";
@@ -83,10 +98,9 @@ function DashboardTable(): JSX.Element{
                     }
                     return(
                         <tr key={row.id}>
-                            <td className={"table-cell " + darkRowClass}>{row.brand}</td>
+                            <td className={"table-cell " + darkRowClass}>{row.make}</td>
                             <td className={"table-cell " + darkRowClass}>{row.model}</td>
-                            <td className={"table-cell " + darkRowClass}>{row.dueDate}</td>
-                            <td className={"table-cell " + darkRowClass}>{row.year}</td>
+                            <td className={"table-cell " + darkRowClass}>{row.year_of_production}</td>
                             <td className={"table-cell " + darkRowClass}>
                                 <h1 className="table-button" onClick={() => handleDetailsClick(row.id)}>Details</h1>
                             </td>
