@@ -16,12 +16,37 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
     const [option, setOption] = useState<string>("");
 
     function handleChoice(event: any){
-        setOption(event.target.value);
+        setOption(event.target.value.toUpperCase());
     }
 
     function handleWindowRender(){
         console.log('1')
         setWindowTrigger(false);
+    }
+
+    async function sendRequest(){
+        let data = {
+            "make": make,
+            "model": model,
+            "year": year,
+            "inspectionType": option
+        };
+
+        let config: RequestInit = {
+            method: "POST",
+            mode: "cors",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }
+
+        await fetch("http://localhost:8080/request-inspection", config)
+            .then(res => {
+                console.log("SUCCESS")
+                handleWindowRender();
+            })
     }
 
     return(
@@ -46,7 +71,7 @@ function AddInspectionWindow({windowTrigger, setWindowTrigger}: props): JSX.Elem
                 }
             </select>
 
-            <button className="bg-sky-500 rounded text-white py-1 my-5 hover:shadow-2xl hover:bg-sky-400 transition duration-150">Request</button>
+            <button className="bg-sky-500 rounded text-white py-1 my-5 hover:shadow-2xl hover:bg-sky-400 transition duration-150" onClick={sendRequest}>Request</button>
         </div>
     )
 }
