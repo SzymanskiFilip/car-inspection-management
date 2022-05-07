@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/check").permitAll()
                 //TODO: Make inspection request only available for clients!
-                .antMatchers("/request-inspection").permitAll()
+                .antMatchers("/request-inspection").hasAuthority("client")
                 .anyRequest()
                 .authenticated()
                 .and()
