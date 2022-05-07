@@ -22,9 +22,8 @@ function DashboardDetailsCard({windowTrigger, setWindowTrigger}: props): JSX.Ele
                     <img src={svg} alt="" className="w-8 hover:cursor-pointer" onClick={handleXClick}/>
                 </div>
                 <div className="mx-4 my-2 flex flex-col items-center">
-                    <h1 className="tracking-wide text-2xl">Filip Szymanski</h1>
-                    <h1>E-Mail: filip@gmail.com</h1>
-                    <h1>Code: 1234-abcd-5678-efgh</h1>
+                    <h1 className="tracking-wide text-2xl">{1}{2}</h1>
+                    <h1>Username: {1}</h1>
                 </div>
             </div>
         </div>
